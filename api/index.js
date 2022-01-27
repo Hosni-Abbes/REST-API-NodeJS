@@ -4,8 +4,9 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config()
 
-//IMPORT POSTS ROUTE FROM ROUTES FOLDER
+//IMPORT ROUTES FROM ROUTES FOLDER
 const postsRoute = require('./routes/posts')
+const authRoute = require('./routes/auth')
 
 //INITIALIZE APP
 const app = express()
@@ -24,7 +25,8 @@ mongoose.connect(process.env.DB_CONNECT)
 
 
 //APPLICATION ROUTES
-app.use('/', postsRoute)
+app.use('/', postsRoute)  //POSTS ROUTE
+app.use('/auth', authRoute) //AUTH ROUTE
 
 
 //RUN THE APPLICATION ON SERVER
